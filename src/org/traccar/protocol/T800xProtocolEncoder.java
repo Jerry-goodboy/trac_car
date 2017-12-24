@@ -34,17 +34,37 @@ public class T800xProtocolEncoder extends BaseProtocolEncoder {
 
         ChannelBuffer buf = ChannelBuffers.dynamicBuffer();
 
+        buf.writeByte('$');
+        buf.writeByte('0');
+        buf.writeByte('8');
+        buf.writeByte(',');
+        buf.writeByte('R');
+        buf.writeByte('A');
+        buf.writeByte(',');
+        buf.writeByte('0');
+        buf.writeByte(',');
+        buf.writeByte('1');
         buf.writeByte('#');
-        buf.writeByte('#');
-        buf.writeByte(T800xProtocolDecoder.MSG_COMMAND);
-        buf.writeShort(7 + 8 + 1 + content.length());
-        buf.writeShort(1); // serial number
-        buf.writeBytes(DatatypeConverter.parseHexBinary("0" + getUniqueId(command.getDeviceId())));
-        buf.writeByte(MODE_SETTING);
-        buf.writeBytes(content.getBytes(StandardCharsets.US_ASCII));
+        buf.writeByte('\n');
 
         return buf;
     }
+
+//    private ChannelBuffer encodeContent(Command command, String content) {
+//
+//        ChannelBuffer buf = ChannelBuffers.dynamicBuffer();
+//
+//        buf.writeByte('#');
+//        buf.writeByte('#');
+//        buf.writeByte(T800xProtocolDecoder.MSG_COMMAND);
+//        buf.writeShort(7 + 8 + 1 + content.length());
+//        buf.writeShort(1); // serial number
+//        buf.writeBytes(DatatypeConverter.parseHexBinary("0" + getUniqueId(command.getDeviceId())));
+//        buf.writeByte(MODE_SETTING);
+//        buf.writeBytes(content.getBytes(StandardCharsets.US_ASCII));
+//
+//        return buf;
+//    }
 
     @Override
     protected Object encodeCommand(Command command) {

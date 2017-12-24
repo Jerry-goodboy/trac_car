@@ -16,10 +16,14 @@
 package org.traccar.protocol;
 
 import org.jboss.netty.buffer.ChannelBuffer;
+import org.jboss.netty.buffer.ChannelBuffers;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.handler.codec.frame.FrameDecoder;
+import org.traccar.helper.Log;
 import org.traccar.helper.StringFinder;
+
+import java.nio.charset.StandardCharsets;
 
 public class WondexFrameDecoder extends FrameDecoder {
 
@@ -28,32 +32,47 @@ public class WondexFrameDecoder extends FrameDecoder {
     @Override
     protected Object decode(
             ChannelHandlerContext ctx, Channel channel, ChannelBuffer buf) throws Exception {
-
         if (buf.readableBytes() < KEEP_ALIVE_LENGTH) {
             return null;
         }
 
-        if (buf.getUnsignedByte(buf.readerIndex()) == 0xD0) {
+        String ddd = buf.toString(StandardCharsets.US_ASCII);
 
-            // Send response
-            ChannelBuffer frame = buf.readBytes(KEEP_ALIVE_LENGTH);
-            if (channel != null) {
-                channel.write(frame);
-            }
-            return frame;
+        if (ddd.indexOf(',') != -1 ){
+            String[ ] ccc = ddd.split(",");
+            int lenRespone = Integer.parseInt(ccc[0].substring(1), 16);
+            if (ccc[0].charAt(0) == '$' && ccc[1].equals("R") && ccc[3].equals("#") && lenRespone + 1 == ddd.substring(3).length() ) {
 
-        } else {
+                Log.warning("GPS设备发送注册指令请求：" + ddd);
 
-            int index = buf.indexOf(buf.readerIndex(), buf.writerIndex(), new StringFinder("\r\n"));
-            if (index != -1) {
-                ChannelBuffer frame = buf.readBytes(index - buf.readerIndex());
-                buf.skipBytes(2);
+                ChannelBuffer aaa = ChannelBuffers.dynamicBuffer();
+
+                aaa.writeByte('$');
+                aaa.writeByte('0');
+                aaa.writeByte('8');
+                aaa.writeByte(',');
+                aaa.writeByte('R');
+                aaa.writeByte('A');
+                aaa.writeByte(',');
+                aaa.writeByte('0');
+                aaa.writeByte(',');
+                aaa.writeByte('1');
+                aaa.writeByte(',');
+                aaa.writeByte('#');
+                aaa.writeByte('\n');
+
+                if (channel != null) {
+                    channel.write(aaa);
+                }
+            }else {
+                Log.warning("FrameDecoder GPS设备正在发送实时位置信息：" + ddd);
+                ChannelBuffer frame = buf.readBytes(buf.readableBytes());
                 return frame;
             }
-
         }
 
         return null;
+
     }
 
 }

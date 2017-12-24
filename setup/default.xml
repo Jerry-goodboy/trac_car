@@ -7,7 +7,7 @@
     <!-- SERVER CONFIG -->
 
     <entry key='web.enable'>true</entry>
-    <entry key='web.port'>8082</entry>
+    <entry key='web.port'>80</entry>
     <entry key='web.path'>./web</entry>
     <entry key='web.cacheControl'>max-age=3600,public</entry>
 
@@ -100,7 +100,7 @@
     <entry key='tzone.port'>5029</entry>
     <entry key='tlt2h.port'>5030</entry>
     <entry key='taip.port'>5031</entry>
-    <entry key='wondex.port'>5032</entry>
+    <entry key='wondex.port'>6688</entry>
     <entry key='cellocator.port'>5033</entry>
     <entry key='galileo.port'>5034</entry>
     <entry key='ywt.port'>5035</entry>
@@ -108,7 +108,7 @@
     <entry key='intellitrac.port'>5037</entry>
     <entry key='gpsmta.port'>5038</entry>
     <entry key='wialon.port'>5039</entry>
-    <entry key='carscop.port'>5040</entry>
+    <entry key='carscop.port'>15040</entry>
     <entry key='apel.port'>5041</entry>
     <entry key='manpower.port'>5042</entry>
     <entry key='globalsat.port'>5043</entry>
@@ -123,7 +123,7 @@
     <entry key='gator.port'>5052</entry>
     <entry key='noran.port'>5053</entry>
     <entry key='m2m.port'>5054</entry>
-    <entry key='osmand.port'>5055</entry>
+    <entry key='osmand.port'>6689</entry>
     <entry key='easytrack.port'>5056</entry>
     <entry key='gpsmarker.port'>5057</entry>
     <entry key='khd.port'>5058</entry>

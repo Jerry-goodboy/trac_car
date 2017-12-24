@@ -17,12 +17,7 @@ package org.traccar;
 
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.ChannelBuffers;
-import org.jboss.netty.channel.Channel;
-import org.jboss.netty.channel.ChannelEvent;
-import org.jboss.netty.channel.ChannelHandlerContext;
-import org.jboss.netty.channel.ChannelUpstreamHandler;
-import org.jboss.netty.channel.Channels;
-import org.jboss.netty.channel.MessageEvent;
+import org.jboss.netty.channel.*;
 import org.traccar.model.Position;
 
 import javax.xml.bind.DatatypeConverter;
@@ -79,6 +74,7 @@ public abstract class ExtendedObjectDecoder implements ChannelUpstreamHandler {
 
     protected void onMessageEvent(
             Channel channel, SocketAddress remoteAddress, Object originalMessage, Object decodedMessage) {
+        System.out.println("aaa");
     }
 
     protected Object handleEmptyMessage(Channel channel, SocketAddress remoteAddress, Object msg) {
