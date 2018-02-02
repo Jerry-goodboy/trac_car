@@ -18,16 +18,16 @@
       <column name="id" type="INT" autoIncrement="true">
         <constraints primaryKey="true" />
       </column>
-      <column name="name" type="VARCHAR2(128)">
+      <column name="name" type="VARCHAR(128)">
         <constraints nullable="false" />
       </column>
-      <column name="email" type="VARCHAR2(128)">
+      <column name="email" type="VARCHAR(128)">
         <constraints nullable="false" />
       </column>
-      <column name="hashedpassword" type="VARCHAR2(128)">
+      <column name="hashedpassword" type="VARCHAR(128)">
         <constraints nullable="false" />
       </column>
-      <column name="salt" type="VARCHAR2(128)">
+      <column name="salt" type="VARCHAR(128)">
         <constraints nullable="false" />
       </column>
       <column name="readonly" type="BOOLEAN" defaultValueBoolean="false">
@@ -36,16 +36,16 @@
       <column name="admin" type="BOOLEAN" defaultValueBoolean="false">
         <constraints nullable="false" />
       </column>
-      <column name="map" type="VARCHAR2(128)" defaultValue="osm">
+      <column name="map" type="VARCHAR(128)" defaultValue="osm">
         <constraints nullable="false" />
       </column>
-      <column name="language" type="VARCHAR2(128)" defaultValue="en">
+      <column name="language" type="VARCHAR(128)" defaultValue="en">
         <constraints nullable="false" />
       </column>
-      <column name="distanceunit" type="VARCHAR2(128)" defaultValue="km">
+      <column name="distanceunit" type="VARCHAR(128)" defaultValue="km">
         <constraints nullable="false" />
       </column>
-      <column name="speedunit" type="VARCHAR2(128)" defaultValue="kmh">
+      <column name="speedunit" type="VARCHAR(128)" defaultValue="kmh">
         <constraints nullable="false" />
       </column>
       <column name="latitude" type="DOUBLE" defaultValueNumeric="0">
@@ -65,13 +65,13 @@
       <column name="id" type="INT" autoIncrement="true">
         <constraints primaryKey="true" />
       </column>
-      <column name="name" type="VARCHAR2(128)">
+      <column name="name" type="VARCHAR(128)">
         <constraints nullable="false" />
       </column>
-      <column name="uniqueid" type="VARCHAR2(128)">
+      <column name="uniqueid" type="VARCHAR(128)">
         <constraints nullable="false" />
       </column>
-      <column name="status" type="VARCHAR2(128)" />
+      <column name="status" type="VARCHAR(128)" />
       <column name="lastupdate" type="TIMESTAMP" />
       <column name="positionid" type="INT" />
     </createTable>
@@ -98,7 +98,7 @@
       <column name="id" type="INT" autoIncrement="true">
         <constraints primaryKey="true" />
       </column>
-      <column name="protocol" type="VARCHAR2(128)" />
+      <column name="protocol" type="VARCHAR(128)" />
       <column name="deviceid" type="int">
         <constraints nullable="false" />
       </column>
@@ -129,8 +129,8 @@
       <column name="course" type="FLOAT">
         <constraints nullable="false" />
       </column>
-      <column name="address" type="VARCHAR2(512)" />
-      <column name="attributes" type="VARCHAR2(4000)">
+      <column name="address" type="VARCHAR(512)" />
+      <column name="attributes" type="VARCHAR(4096)">
         <constraints nullable="false" />
       </column>
     </createTable>
@@ -158,12 +158,12 @@
       <column name="zoom" type="INT" defaultValueNumeric="0">
         <constraints nullable="false" />
       </column>
-      <column name="map" type="VARCHAR2(128)" />
-      <column name="language" type="VARCHAR2(128)" />
-      <column name="distanceunit" type="VARCHAR2(128)" />
-      <column name="speedunit" type="VARCHAR2(128)" />
-      <column name="bingkey" type="VARCHAR2(128)" />
-      <column name="mapurl" type="VARCHAR2(128)" />
+      <column name="map" type="VARCHAR(128)" />
+      <column name="language" type="VARCHAR(128)" />
+      <column name="distanceunit" type="VARCHAR(128)" />
+      <column name="speedunit" type="VARCHAR(128)" />
+      <column name="bingkey" type="VARCHAR(128)" />
+      <column name="mapurl" type="VARCHAR(128)" />
       <column name="readonly" type="BOOLEAN" defaultValueBoolean="false">
         <constraints nullable="false" />
       </column>
